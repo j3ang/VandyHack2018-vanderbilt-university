@@ -1,0 +1,40 @@
+mixin stat-cards(user)
+   if user
+      .row
+         .col-xl-6
+            .card.card-stats.mb-4
+               .card-body
+                  .row.align-items-center
+                     .col-auto
+                        .media.align-items-center
+                           span.avatar.avatar-lg.rounded-circle
+                              img(alt='Image placeholder', src= user.Image)
+                     .col
+                        h5.card-title.text-uppercase.mb-0= user.Name
+                        span.text-muted.text-sm.mb-0=  '@' + user.Handle
+                        .d-flex.justify-content-between
+                           span
+                              p.text-sm.font-weight-bold.mb-0.mt-1= 'Tweets' 
+                              p.mb-0= user.Tweets
+                           span
+                              p.text-sm.font-weight-bold.mb-0.mt-1= 'Following' 
+                              p.mb-0= user.Following
+                           span
+                              p.text-sm.font-weight-bold.mb-0.mt-1= 'Followers' 
+                              p.mb-0= user.Followers
+         .col-xl-6
+            .card.card-stats.mb-4
+               .card-body#profileProp
+                  .row.d-flex.justify-content-around.mt-4
+                     span.d-flex
+                        .icon.icon-shape.bg-primary.text-white.rounded-circle.shadow
+                           i.fas.fa-folder-open
+                        .text-wrapepr.col-xl-12
+                           p.text-sm.text-center.font-weight-bold.mb-0.mt-1= 'Prominent Category'
+                           p.mb-0.text-center= user.Category
+                     span.d-flex
+                        .icon.icon-shape.bg-orange.text-white.rounded-circle.shadow
+                           i.fas.fa-star
+                        .text-wrapepr.col-xl-12
+                           p.text-sm.text-center.font-weight-bold.mb-0.mt-1= 'Recommendation Level'
+                           p.mb-0.text-center= user.Grade

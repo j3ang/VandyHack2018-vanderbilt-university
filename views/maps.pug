@@ -1,0 +1,61 @@
+extends ../layouts/default
+include ../mixins/profile-charts
+
+
+block page-content
+   // Page-content
+   +profile-charts
+         .row.mt-5
+         .col-xl-12.mb-5.mb-xl-0
+               .card.shadow
+               .card-header.border-0
+                     .row.align-items-center
+                     .col
+                           h3.mb-0 Celeberties
+                     .col.text-right
+                           a.btn.btn-sm.btn-primary(href='#!') See all
+               .table-responsive
+                     // Projects table 
+                     table.table.align-items-center.table-flush
+                     thead.thead-light
+                           tr
+                           th(scope='col') Name
+                           th(scope='col') Followers
+                           th(scope='col') retweets
+                           th(scope='col') Bounce rate
+                     tbody
+                           tr
+                           th(scope='row') /argon/
+                           td 4,569
+                           td 340
+                           td
+                                 i.fas.fa-arrow-up.text-success.mr-3
+                                 | 46,53%
+                           tr
+                           th(scope='row') /argon/index.html
+                           td 3,985
+                           td 319
+                           td
+                                 i.fas.fa-arrow-down.text-warning.mr-3
+                                 | 46,53%
+                           tr
+                           th(scope='row') /argon/charts.html
+                           td 3,513
+                           td 294
+                           td
+                                 i.fas.fa-arrow-down.text-warning.mr-3
+                                 | 36,49%
+                           tr
+                           th(scope='row') /argon/tables.html
+                           td 2,050
+                           td 147
+                           td
+                                 i.fas.fa-arrow-up.text-success.mr-3
+                                 | 50,87%
+                           tr
+                           th(scope='row') /argon/profile.html
+                           td 1,795
+                           td 190
+                           td
+                                 i.fas.fa-arrow-down.text-danger.mr-3
+                                 | 46,53%

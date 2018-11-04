@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Influx</title>
+    <!-- Favicon -->
+    <link href="img/brand/favicon.ico" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="css/argon.css?v=1.0.0" rel="stylesheet">
+
+    <style>
+        #loader {
+            position: absolute;
+            z-index: 5;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Sidenav -->
+<% include templates/sidebar.ejs %>
+
+<!-- Main content -->
+<div class="main-content">
+    <div id="loader" style="display:none;position: absolute;z-index: 5;width: 100%;height: 100%;background: #fff;"><img style="margin-top: 200px;margin-left: auto;margin-right: auto;display: table;" src="/img/copper-loader.gif"></div>
+
+    <!-- Top navbar -->
+    <%- include('templates/top-nav.ejs', {title: 'INFLUX QUERY TOOL'}) %>
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+
+        <div class="card card-stats mb-12 mb-lg-12">
+            <div class="card-body">
+             <form style="margin:40px;"  action="/analysis/form" method="post">
+                    <h4>Basic Information</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" required name="cname" class="form-control" id="exampleFormControlInput1" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" required name="pname" placeholder="Product Name" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Check Product Category</h4>
+
+                    <div class="form-group"  style="margin-left: 15px;">
+                    <div class="row">
+
+                            <div class="custom-control custom-checkbox col-md-12">
+                                <input name="cbTech" class="custom-control-input" id="checkTech" type="checkbox" checked>
+                                <label class="custom-control-label" for="checkTech">Technology</label>
+                            </div>
+                            <div class="custom-control custom-checkbox col-md-12">
+                                <input name="cbEnt" class="custom-control-input" id="checkEnt" type="checkbox">
+                                <label class="custom-control-label" for="checkEnt">Entertainment</label>
+                            </div>
+                            <div class="custom-control custom-checkbox col-md-12">
+                                <input name="cbFood"  class="custom-control-input" id="checkFood" type="checkbox" >
+                                <label class="custom-control-label" for="checkFood">Food</label>
+                            </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-control custom-checkbox col-md-12">
+                            <input name="cbPolitics"  class="custom-control-input" id="checkPolitics" type="checkbox">
+                            <label class="custom-control-label" for="checkPolitics">Politics</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col-md-12">
+                            <input name="cbSports"  class="custom-control-input" id="checkSports" type="checkbox">
+                            <label class="custom-control-label" for="checkSports">Sports</label>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <h4>Audience Perception</h4>
+
+                 <div class="form-group" style="margin-left: 15px;">
+                    <div class="row">
+                        <div class="custom-control custom-radio col-md-12">
+                            <input value="vp" name="rbs" class="custom-control-input" id="customRadio5" type="radio">
+                            <label class="custom-control-label" for="customRadio5">Very Positive</label>
+                        </div>
+                        <div class="custom-control custom-radio col-md-12">
+                            <input value="p" name="rbs" class="custom-control-input" id="customRadio6" checked="" type="radio">
+                            <label class="custom-control-label" for="customRadio6">Positive</label>
+                        </div>
+                        <div class="custom-control custom-radio col-md-12">
+                            <input value="av" name="rbs" class="custom-control-input" id="customRadio7"  type="radio">
+                            <label class="custom-control-label" for="customRadio7">Average</label>
+                        </div>
+                    </div>
+                 </div>
+                 <div  class="form-group">
+                     <button id="sub" type="submit" class="btn btn-primary btn-lg">Run Analysis</button>
+                 </div>
+
+            </form>
+            </div>
+        <div>
+
+
+
+
+
+        <!-- Footer -->
+        <% include templates/footer.ejs %>
+    </div>
+        </div></div>
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Optional JS -->
+<script src="vendor/chart.js/dist/Chart.min.js"></script>
+<script src="vendor/chart.js/dist/Chart.extension.js"></script>
+<!-- Argon JS -->
+<script src="js/argon.js?v=1.0.0"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#sub").click(function(){
+            $("#loader").css("display","block");
+        });
+    });
+</script>
+
+</body>
+
+</html>

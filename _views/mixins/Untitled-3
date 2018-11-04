@@ -1,0 +1,54 @@
+mixin profile-charts
+.container-fluid.mt--7
+
+      .row
+            .col-xl-12.mt-4
+                  .card.shadow
+                        .card-header.bg-transparent
+                              .row.align-items-center
+                                    .col
+                                          h6.text-uppercase.text-muted.ls-1.mb-1= 'Influencer' 
+                                          h2.mb-0= 'Sentiments'
+                        .card-body
+                              // Chart 
+                              .chart
+                                    canvas#chart-celebSentiment.chart-canvas
+
+            .col-xl-6
+                  .card.shadow
+                        .card-header.bg-transparent
+                              .row.align-items-center
+                                    .col
+                                          h6.text-uppercase.text-muted.ls-1.mb-1= 'Influencer'
+                                          h2.mb-0=  'Tweet Relevence'
+                        .card-body
+                              // Chart 
+                              .chart
+                                    canvas#chart-celeb.chart-canvas
+            .col-xl-6
+                  .card.shadow
+                        .card-header.bg-transparent
+                              .row.align-items-center
+                                    .col
+                                          h6.text-uppercase.text-muted.ls-1.mb-1= 'Followers' 
+                                          h2.mb-0= 'Tweet Relevence'
+                        .card-body
+                              // Chart 
+                              .chart
+                                    canvas#chart-followers.chart-canvas
+
+            .col-xl-12.mt-4
+                  .card.shadow
+                        .card-header.bg-transparent
+                              .row.align-items-center
+                                    .col
+                                          h6.text-uppercase.text-muted.ls-1.mb-1= 'Influencer' 
+                                          h2.mb-0= 'Sentiments'
+                        .card-body
+                              // Chart 
+                              .chart
+                                 #map.dl-map(style='height:400px;')
+
+
+
+

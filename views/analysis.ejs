@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Influx</title>
+    <!-- Favicon -->
+    <link href="/img/brand/favicon.ico" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="/css/argon.css?v=1.0.0" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1533195059" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-clustering.js"></script>
+    <script type="text/javascript" src="https://js.cit.datalens.api.here.com/latest/mapsjs-datalens.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+
+</head>
+
+<body>
+<!-- Sidenav -->
+<% include templates/sidebar.ejs %>
+<!-- Main content -->
+<div class="main-content">
+    <!-- Top navbar -->
+    <%- include('templates/top-nav.ejs', {title: 'Your Results'}) %>
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Company</h5>
+                                        <span class="h2 font-weight-bold mb-0"><%= cname %></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap"><%= pname %></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Target Categories</h5>
+                                        <span class="h3 font-weight-bold mb-0"><%= categories %></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Tracking since yesterday</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Target Perception</h5>
+                                        <span class="h2 font-weight-bold mb-0"><%= sentiment %></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Tracking since yesterday</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+                <div class="card card-stats mb-12 mb-lg-12">
+                    <div class="card-body">
+                        <h2>Ordered List</h2>
+                        <div class="row">
+
+                            <% var ukeys = Object.keys(data);
+                            for(var i=0;i<ukeys.length;i++) { console.log(ukeys[i]); %>
+
+                                <div class="card card-stats col-md-4">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="media align-items-center"><span class="avatar avatar-lg rounded-circle"><img alt="Image placeholder"
+                                                                                                                                         src='<%= users[ukeys[i]].Image%>' ></span></div>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase mb-0"><span style="color:#FF0266"><%= (i+1)%>. </span><%= users[ukeys[i]].Name %></h5><span class="text-muted text-sm mb-0">@<%= users[ukeys[i]].Handle %></span>
+                                                <div class="d-flex justify-content-between"><span>
+                                              <p class="text-sm font-weight-bold mb-0 mt-1">Tweets</p>
+                                              <p class="mb-0"><%= users[ukeys[i]].Tweets %></p>
+                                           </span><span>
+                                              <p class="text-sm font-weight-bold mb-0 mt-1">Following</p>
+                                              <p class="mb-0"><%= users[ukeys[i]].Following %></p>
+                                           </span><span>
+                                              <p class="text-sm font-weight-bold mb-0 mt-1">Followers</p>
+                                              <p class="mb-0"><%= users[ukeys[i]].Followers %></p>
+                                           </span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-stats mb-12 mb-lg-12" style="margin-top: 30px">
+                    <div class="card-body">
+
+                        <h2>Overall Score</h2>
+                        <div class="chart" style="margin-top: 10px;">
+                        <canvas id="chart23"  class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="card card-stats mb-12 mb-lg-12" style="margin-top: 30px">
+            <div class="card-body">
+
+                <h2>Potential Audience</h2>
+                <div id = "map" class = "dl-map" style="height:400px;"></div>
+
+
+            </div>
+        </div>
+
+                <!-- Footer -->
+                <% include templates/footer.ejs %>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+        <!-- Core -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Optional JS -->
+        <script src="/vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="/vendor/chart.js/dist/Chart.extension.js"></script>
+        <!-- Argon JS -->
+        <script src="/js/argon.js?v=1.0.0"></script>
+        <script>
+        $(document).ready(function(){
+
+            function htmlDecode(input){
+                var e = document.createElement('div');
+                e.innerHTML = input;
+                return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+            }
+
+            var $chart = $('#chart23');
+            var myVar = JSON.parse(htmlDecode("<%= JSON.stringify(data) %>"));
+
+            var locations = JSON.parse(htmlDecode("<%= JSON.stringify(locations) %>"));
+
+            console.log(myVar);
+            function initChart23($chart) {
+
+                var keys = Object.keys(myVar);
+                var values = Object.values(myVar);
+
+                // Create chart
+                var ordersChart = new Chart($chart, {
+                    type: 'bar',
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    callback: function(value) {
+                                        if (!(value % 10)) {
+                                            //return '$' + value + 'k'
+                                            return value
+                                        }
+                                    }
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(item, data) {
+                                    var label = data.datasets[item.datasetIndex].label || '';
+                                    var yLabel = item.yLabel;
+                                    var content = '';
+
+                                    if (data.datasets.length > 1) {
+                                        content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+                                    }
+
+                                    content += '<span class="popover-body-value">' + yLabel + '</span>';
+
+                                    return content;
+                                }
+                            }
+                        }
+                    },
+                    data: {
+                        labels: keys,
+                        datasets: [{
+                            label: 'Sales',
+                            data: values
+                        }]
+                    }
+                });
+
+                // Save to jQuery object
+                $chart.data('chart', ordersChart);
+            }
+            initChart23($chart);
+
+
+            var host = "cit.datalens.api.here.com";
+            var queries = {"query":{"fileName":"query.json","dataset":"57b42548635b42cab517d62db91ee954","id":"567f23e2902542619d849ecf0544f117"}};
+            const {query} = queries;
+
+            function findStations() {
+                var coortable= [];
+                console.log("printing locations");
+
+                    for(let j=0;j<locations.length;j++){
+                        let coords = JSON.parse(locations[j].Location.replace(/'/g,"\""));
+                        coortable.push(coords.coordinates);
+                    }
+
+
+                    var nashville = new mapsjs.map.Marker({lat: 36.16, lng: -86.78}, {icon: icon});
+                    nashgroup = new mapsjs.map.Group();
+                    nashgroup.addObject(nashville)
+                    map.setViewBounds(nashgroup.getBounds());
+                    map.setZoom(1)
+                    map.addObject(nashville);
+                    for (let i = 0; i < coortable.length; i++) {
+                        map.addObject(new mapsjs.map.Marker({lat: coortable[i][1], lng: coortable[i][0]},{icon: icon2}));
+
+                    }
+
+            }
+
+            var platform = new H.service.Platform({
+                app_id: 'ZjNYVApAFoUvPWClnv9W',
+                app_code: 'lh3atS4f8NpsDcPCzubGYA',
+                useHTTPS: true
+            });
+            const pixelRatio = devicePixelRatio > 1 ? 2 : 1;
+            const defaultLayers = platform.createDefaultLayers({tileSize: 256 * pixelRatio});
+
+            var map = new H.Map(document.getElementsByClassName('dl-map')[0],
+                defaultLayers.normal.basenight, {pixelRatio});
+
+            var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+            var ui = H.ui.UI.createDefault(map, defaultLayers);
+            ui.removeControl('mapsettings');
+
+            var svg =
+                '<svg xmlns="http://www.w3.org/2000/svg" width="28px" height="36px">' +
+                '<path d="M 19 31 C 19 32.7 16.3 34 13 34 C 9.7 34 7 32.7 7 31 C 7 29.3 9.7 28 13 28 C 16.3 28 19' +
+                ' 29.3 19 31 Z" fill="#000" fill-opacity=".2"/>' +
+                '<path d="M 13 0 C 9.5 0 6.3 1.3 3.8 3.8 C 1.4 7.8 0 9.4 0 12.8 C 0 16.3 1.4 19.5 3.8 21.9 L 13 31 L 22.2' +
+                ' 21.9 C 24.6 19.5 25.9 16.3 25.9 12.8 C 25.9 9.4 24.6 6.1 22.1 3.8 C 19.7 1.3 16.5 0 13 0 Z" fill="#fff"/>' +
+                '<path d="M 13 2.2 C 6 2.2 2.3 7.2 2.1 12.8 C 2.1 16.1 3.1 18.4 5.2 20.5 L 13 28.2 L 20.8 20.5 C' +
+                ' 22.9 18.4 23.8 16.2 23.8 12.8 C 23.6 7.07 20 2.2 13 2.2 Z" fill="#090"/>' +
+                '</svg>';
+
+            var svg2 =
+                '<svg xmlns="http://www.w3.org/2000/svg" width="28px" height="36px">' +
+                '<path d="M 19 31 C 19 32.7 16.3 34 13 34 C 9.7 34 7 32.7 7 31 C 7 29.3 9.7 28 13 28 C 16.3 28 19' +
+                ' 29.3 19 31 Z" fill="#000" fill-opacity=".2"/>' +
+                '<path d="M 13 0 C 9.5 0 6.3 1.3 3.8 3.8 C 1.4 7.8 0 9.4 0 12.8 C 0 16.3 1.4 19.5 3.8 21.9 L 13 31 L 22.2' +
+                ' 21.9 C 24.6 19.5 25.9 16.3 25.9 12.8 C 25.9 9.4 24.6 6.1 22.1 3.8 C 19.7 1.3 16.5 0 13 0 Z" fill="#fff"/>' +
+                '<path d="M 13 2.2 C 6 2.2 2.3 7.2 2.1 12.8 C 2.1 16.1 3.1 18.4 5.2 20.5 L 13 28.2 L 20.8 20.5 C' +
+                ' 22.9 18.4 23.8 16.2 23.8 12.8 C 23.6 7.07 20 2.2 13 2.2 Z" fill="#2D5EE6"/>' +
+                '</svg>';
+
+            var options = {
+                'size': new mapsjs.math.Size(18, 24),
+                'anchor': new mapsjs.math.Point(14, 32),
+                'hitArea': new mapsjs.map.HitArea(
+                    mapsjs.map.HitArea.ShapeType.POLYGON, [0, 16, 0, 7, 8, 0, 18, 0, 26, 7, 26, 16, 18, 34, 8, 34])
+            };
+            icon = new mapsjs.map.Icon(svg, options);
+            icon2 = new mapsjs.map.Icon(svg2, options);
+
+            findStations();
+
+
+
+        });
+        </script>
+</body>
+
+</html>

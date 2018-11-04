@@ -1,0 +1,160 @@
+.hideButton{
+    display: none;
+}
+
+.showButton{
+    display: table;
+}
+
+.main_team_img{
+    max-width:150px;
+    width:150px;
+}
+
+.mfixed-navbar{
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.navbarSolid{
+    background-color: rgb(3,3,3,0.8);
+}
+
+.title_font{
+    font: normal normal bold 46px/1.4em 'playfair display',serif;
+    color: #000000;
+}
+
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url('../img/theme/iit.jpg');
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2 {
+    /* The image used */
+    background-image: url('../img/theme/help2.jpg');
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+#index-video {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    z-index: -100;
+    right: 0;
+    bottom: 0;
+    background: url(../img/index-image.jpg) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.index-video-wrapper {
+    height: 100%;
+    width: 100%;
+    background: url(../img/index-image.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100% !important;
+    height: 100%;
+}
+
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+
+.video-container video.fillWidth {
+    width: 100%;
+}
+
+.back-to-top {
+    background: none;
+    margin: 0;
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+    color: #e51937;
+}
+
+.back-to-top i {
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 35px;
+}

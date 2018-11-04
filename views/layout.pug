@@ -1,0 +1,151 @@
+doctype html
+html
+
+    //- HTML HEADER
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='description', content='Start your development with a Dashboard for Bootstrap 4.')
+        meta(name='author', content='Creative Tim')
+        title Twitter Influencer Picker
+
+        // Favicon
+        link(rel='apple-touch-icon' sizes='180x180' href='img/brand/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='img/brand/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='img/brand/favicon-16x16.png')
+        link(rel='manifest' href='/site.webmanifest')
+        meta(name='msapplication-TileColor' content='#da532c')
+        meta(name='theme-color' content='#ffffff')
+
+        // Fonts
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', rel='stylesheet')
+        // Icons
+        link(href='vendor/nucleo/css/nucleo.css', rel='stylesheet')
+        link(href='vendor/@fortawesome/fontawesome-free/css/all.min.css', rel='stylesheet')
+        // Argon CSS
+        link(type='text/css', href='css/argon.min.css?v=1.0.0', rel='stylesheet')
+
+        //- Include template-specific stylesheets by extending the css block
+        block css
+
+
+        //- Add any other template-specific HEAD tags by extending the head block
+        block head
+
+    //- HTML BODY
+    body
+        block content
+            //- NOTE:
+            //- There is no .container wrapping class around body blocks to allow more flexibility in design.
+            //- Remember to include it in your templates when you override the intro and content blocks!
+            // Sidenav
+            nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light.bg-white
+                .container-fluid
+                    // Toggler
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#sidenav-collapse-main', aria-controls='sidenav-main', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    // Brand
+                    a.navbar-brand.pt-0(href='/')
+                        img.navbar-brand-img(src='img/brand/blue.png', alt='...')
+                    // Collapse
+                    #sidenav-collapse-main.collapse.navbar-collapse
+                        // Collapse header
+                        .navbar-collapse-header.d-md-none
+                            .row
+                                .col-6.collapse-brand
+                                    a(href='/')
+                                        img(src='img/brand/blue.png')
+                                .col-6.collapse-close
+                                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#sidenav-collapse-main', aria-controls='sidenav-main', aria-expanded='false', aria-label='Toggle sidenav')
+                                        span
+                                        span
+                        // Form
+                        form.mt-4.mb-3.d-md-none
+                            .input-group.input-group-rounded.input-group-merge
+                                input.form-control.form-control-rounded.form-control-prepended(type='search', placeholder='Search', aria-label='Search')
+                                .input-group-prepend
+                                    span.input-group-text
+                                        i.fas.fa-search
+
+                        // Navigation
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href='/')
+                                    i.ni.ni-tv-2.text-primary
+                                    |  Dashboard
+
+                            li.nav-item
+                                a.nav-link(href='/maps')
+                                    i.ni.ni-pin-3.text-orange
+                                    |  Maps
+
+                        ////////////////////////////////////////////////
+                        // Divider
+                        hr.my-3
+                        ////////////////////////////////////////////////
+
+                        // Heading
+                        h6.navbar-heading.text-muted Celebrities
+                        // List of celeberties
+                        //- ul.navbar-nav.mb-md-3
+                        //- 	li.nav-item
+                        //- 		a.nav-link(href='https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html')
+                        //- 			i.ni.ni-spaceship
+                        //- 			|  Getting started
+
+
+            // Main content
+            .main-content
+                // Top navbar
+                nav.navbar.navbar-top.navbar-expand-md.navbar-dark#navbar-main
+                    .container-fluid
+                        // Brand
+                        a.h4.mb-0.text-white.text-uppercase.d-none.d-lg-inline-block(href='/') Dashboard
+                        // Form
+                        form.navbar-search.navbar-search-dark.form-inline.mr-3.d-none.d-md-flex.ml-lg-auto
+                            .form-group.mb-0
+                                .input-group.input-group-alternative
+                                    .input-group-prepend
+                                        span.input-group-text
+                                            i.fas.fa-search
+                                    input.form-control(placeholder='Search', type='text')
+
+                .header.bg-gradient-info.pb-8.pt-5.pt-md-8
+                    .container-fluid
+                        .header-body
+
+
+                block page-content
+
+
+                block footer
+                    // Footer
+                    .container-fluid
+                        footer.footer
+                            .row.align-items-center.justify-content-xl-between
+                                .col-xl-6
+                                    .copyright.text-center.text-xl-left.text-muted
+                                    | © 2018
+                                    a.font-weight-bold.ml-1(href='#', target='_blank') Team TIP
+                                .col-xl-6
+                                    ul.nav.nav-footer.justify-content-center.justify-content-xl-end
+                                        li.nav-item
+                                            a.nav-link(href='http://www.j3ang.me', target='_blank') Alex
+                                        li.nav-item
+                                            a.nav-link(href='http://aambekar.com', target='_blank') Abhijeet
+                                        li.nav-item
+                                            a.nav-link(href='https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md', target='_blank') MIT License
+
+        //- Add scripts that are globally required by your site here.
+        //- Include template-specific javascript files by extending the js block
+        block js
+            // Argon Scripts
+            // Core
+            script(src='vendor/jquery/dist/jquery.min.js')
+            script(src='vendor/bootstrap/dist/js/bootstrap.bundle.min.js')
+            // Optional JS
+            script(src='vendor/chart.js/dist/Chart.min.js')
+            script(src='vendor/chart.js/dist/Chart.extension.js')
+            // Argon JS
+            script(src='js/argon.js?v=1.0.0')
+

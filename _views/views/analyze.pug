@@ -1,0 +1,69 @@
+extends ../layouts/default
+
+block main-content
+      // Top navbar 
+      nav.navbar.navbar-top.navbar-expand-md.navbar-dark#navbar-main
+            .container-fluid
+                  // Brand 
+                  a.h4.mb-0.text-white.text-uppercase.d-none.d-lg-inline-block(href='/') Dashboard
+
+      // Header 
+      .header.bg-gradient-info.pb-8.pt-5.pt-md-8
+            .container-fluid
+
+
+block page-content
+      // Page content 
+      .container-fluid.mt--7
+            .row
+                  .col-xl-12.mb-5.mb-xl-0
+                        .col-xl-12.order-xl-1
+                              .card.bg-secondary.shadow
+                                    .card-header.bg-white.border-0
+                                          .row.align-items-center
+                                                .col-8
+                                                      h3.mb-0 Analyze Request Form
+                                                //- .col-4.text-right
+                                                //-       a.btn.btn-sm.btn-primary(href='#!') Settings
+                                    .card-body
+                                          form
+                                                h6.heading-small.text-muted.mb-4 company information
+                                                .pl-lg-4
+                                                      .row
+                                                            .col-lg-6
+                                                                  .form-group
+                                                                        label.form-control-label(for='product/service-name') Product/Service Name
+                                                                        input#input-username.form-control.form-control-alternative(type='text', placeholder='Username')
+                                                            .col-lg-6
+                                                                  .form-group
+                                                                        label.form-control-label(for='input-email') Email Address
+                                                                        input#input-email.form-control.form-control-alternative(type='email', placeholder='Useexample@gmail.com')
+                                                      .row
+                                                            .col-lg-6
+                                                                  .form-group
+                                                                        label.form-control-label(for='product-xategcry') Product Category
+                                                                        select.form-control#exampleFormControlSelect1
+                                                                              option Technology
+                                                                              option 2
+                                                                              option 3
+                                                                              option 4
+                                                                              option 5
+                                                            .col-lg-6
+                                                                  .form-group
+                                                                        label.form-control-label(for='product-xategcry') Audience Type
+                                                                        select.form-control#exampleFormControlSelect1
+                                                                              option Technology
+                                                                              option 2
+                                                                              option 3
+                                                                              option 4
+                                                                              option 5
+
+                                                      hr.my-5
+                                                      .row
+                                                            .col-lg-12
+                                                                  .form-group
+                                                                        label.form-control-label(for='product-xategcry') Potential Influencers
+                                                                        input#input-celebs.form-control(type='text', placeholder='Kanye West, Stephen Curry,Leonardo DiCaprio')
+
+                                                      .row.mt-6.mb-5
+                                                            button.btn.btn-primary.btn-lg.btn-block(type='button') Ok, Submit

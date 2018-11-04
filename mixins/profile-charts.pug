@@ -1,0 +1,56 @@
+mixin profile-charts
+      .container-fluid.mt--7
+            .row
+                  .col-xl-12.mb-4
+                        .card.shadow
+                              .card-header.bg-transparent
+                                    .row.align-items-center
+                                          .col
+                                                h6.text-uppercase.text-muted.ls-1.mb-1= 'Followers' 
+                                                h2.mb-0= 'Distribution Maps'
+                              .card-body.p-0
+                                    // Chart
+                                    .chart.ml-4.mr-4
+                                          #map.dl-map(style='height:320px;')
+
+
+
+                  .col-xl-6
+                        .card.shadow
+                              .card-header.bg-transparent
+                                    .row.align-items-center
+                                          .col
+                                                h6.text-uppercase.text-muted.ls-1.mb-1= 'Relevance'
+                                                h2.mb-0=  'Gossips'
+                              .card-body
+                                    // Chart 
+                                    .chart
+                                          canvas#chart-celeb.chart-canvas
+
+                  .col-xl-6
+                        .card.shadow
+                              .card-header.bg-transparent
+                                    .row.align-items-center
+                                          .col
+                                                h6.text-uppercase.text-muted.ls-1.mb-1= 'Relevance'
+                                                h2.mb-0= 'Audience'
+                              .card-body
+                                    // Chart 
+                                    .chart
+                                          canvas#chart-followers.chart-canvas
+
+                  .col-xl-6.mt-4
+                        .card.shadow
+                              .card-header.bg-transparent
+                                    .row.align-items-center
+                                          .col
+                                                h6.text-uppercase.text-muted.ls-1.mb-1= 'Influencer' 
+                                                h2.mb-0= 'Sentiments'
+                              .card-body
+                                    // Chart 
+                                    .chart
+                                          canvas#chart-celebSentiment.chart-canvas
+
+
+
+

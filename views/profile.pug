@@ -1,0 +1,14 @@
+extends ../layouts/default
+include ../mixins/profile-charts
+
+block main-content
+      // Top navbar 
+      nav.navbar.navbar-top.navbar-expand-md.navbar-dark#navbar-main
+
+      // Header 
+      .header.bg-gradient-info.pb-8.pt-8.pt-sm-6
+            .container-fluid
+                  +stat-cards(celeb)
+
+block page-content
+      +profile-charts

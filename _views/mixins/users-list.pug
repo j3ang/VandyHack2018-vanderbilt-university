@@ -1,0 +1,13 @@
+
+mixin users-list(data)
+   if data
+      ul.list-unstyled
+         each user in data.length ? data : ['There is no data']
+            li
+               a.nav-link(href='/profile/' + user.Handle)
+                  .media.align-items-center
+                     span.avatar.avatar-sm.rounded-circle
+                        img(alt='Image placeholder', src= user.Image)
+                     .media-body.ml-2.d-lg-block.media
+                        .mb-0.text-sm.font-weight-bold= user.Name
+                        .text-sm= user.Followers
